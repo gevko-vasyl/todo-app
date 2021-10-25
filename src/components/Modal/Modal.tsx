@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import toast from 'react-hot-toast';
 import { useAppDispatch } from '../../hooks/redux';
 import { toggleModal, updateTodos } from '../../redux/slices/todoSlice';
 import { MdClose } from 'react-icons/md';
@@ -25,6 +26,7 @@ export default function Modal() {
     dispatch(updateTodos(todoValue));
     dispatch(toggleModal());
     setTodoValue('');
+    toast.success('You succesfully change your todo');
   };
   return createPortal(
     <ModalOverlay>

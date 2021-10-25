@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { nanoid } from 'nanoid';
+import toast from 'react-hot-toast';
 import { ITodo } from '../../types/ITodo';
 import { addTodo } from '../../redux/slices/todoSlice';
 import { TodoFormContainer, TodoFormTitle, Form, FormInput, FormButton } from './TodoForm.styles';
@@ -25,6 +26,7 @@ export default function TodoForm() {
     e.preventDefault();
     dispatch(addTodo(form));
     setForm(initialState);
+    toast.success('New todo succesfully added to your list');
   };
 
   return (

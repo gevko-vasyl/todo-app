@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useAppDispatch } from '../../hooks/redux';
 import { ITodo } from '../../types/ITodo';
 import {
@@ -27,6 +28,11 @@ export default function Todo({ todo }: Props) {
     dispatch(toggleModal());
   };
 
+  const deleteTodoHandler = () => {
+    dispatch(deleteTodo(todo.id));
+    toast.success('Todo was succesfully removed from your list');
+  };
+
   return (
     <TodoContainer>
       <TodoInputTitleContainer>
@@ -40,7 +46,7 @@ export default function Todo({ todo }: Props) {
 
       <TodoIconsContainer>
         <FaEdit size='25' onClick={editDispatchHandler} />
-        <FaTrashAlt size='25' onClick={() => dispatch(deleteTodo(todo.id))} />
+        <FaTrashAlt size='25' onClick={deleteTodoHandler} />
       </TodoIconsContainer>
     </TodoContainer>
   );

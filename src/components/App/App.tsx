@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/redux';
+import { Toaster } from 'react-hot-toast';
 import Menu from '../Menu/Menu';
 import TodoList from '../TodoList/TodoList';
 import TodoForm from '../TodoForm/TodoForm';
@@ -24,6 +25,7 @@ function App() {
         </Route>
       </Switch>
       {isModalShown && <Modal />}
+      <Toaster position='top-right' toastOptions={{ duration: 2000 }} />
     </Container>
   );
 }
